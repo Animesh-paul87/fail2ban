@@ -29,6 +29,8 @@
 
 uncoment the ignoreip field line 92 and add trusted ip, which will not be observed by fail2ban, here the ip is 192.168.77.147
 ```ignoreip = 127.0.0.1/8 ::1 192.168.77.147```
+###### Always verify your configuration syntax 
+```$sudo fail2ban-client thrift```
 
  ###### Restart the fail2ban service
 **```$ sudo systemctl restart fail2ban```**

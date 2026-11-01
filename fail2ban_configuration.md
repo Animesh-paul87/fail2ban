@@ -2,10 +2,10 @@
 fail2ban configuration
 
 Required repository EPEL
-$ sudo dnf install epel-release -y
+``` $ sudo dnf install epel-release -y ```
 
 Install Fail2ban
-$ sudo dnf install fail2ban -y
+``` $ sudo dnf install fail2ban -y ```
 
 enable and staart the service
 $ sudo systemctl enable fail2ban --now
@@ -48,7 +48,7 @@ try to connect with any other ip than the ignored one
 
 
 below are the log file which is showing the blocking
-==============================================================================================================================
+
 ```
 2026-11-01 07:10:30,709 fail2ban.server         [2408]: INFO    Starting Fail2ban v1.1.0
 2026-11-01 07:10:30,710 fail2ban.observer       [2408]: INFO    Observer start...
@@ -75,7 +75,7 @@ below are the log file which is showing the blocking
 2026-11-01 07:15:47,205 fail2ban.actions        [2408]: NOTICE  [sshd] Ban 10.10.10.122
 2026-11-01 07:25:46,476 fail2ban.actions        [2408]: NOTICE  [sshd] Unban 10.10.10.122
 ```
-===================================================================================================================================
+
 
 Unblocking a block listed ip for the emergency case.
 

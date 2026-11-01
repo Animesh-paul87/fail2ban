@@ -2,6 +2,7 @@
 fail2ban configuration
 
 Required repository EPEL
+
 **```  $ sudo dnf install epel-release -y  ```**
 
 Install Fail2ban

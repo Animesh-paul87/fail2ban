@@ -1,40 +1,40 @@
 # fail2ban
 fail2ban configuration
 
-Required repository EPEL
+Required repository `EPEL`
 
 **```  $ sudo dnf install epel-release -y  ```**
 
-Install Fail2ban
-``` $ sudo dnf install fail2ban -y ```
+Install `Fail2ban`
+**``` $ sudo dnf install fail2ban -y ```**
 
-enable and staart the service
-$ sudo systemctl enable fail2ban --now
+# enable and start the service
+**```$ sudo systemctl enable fail2ban --now```**
 
-go to the configuration Directory
-$ cd /etc/fail2ban
+# go to the configuration Directory
+**```$ cd /etc/fail2ban```**
 
 create a backup of the mail configuration file.
-$ mv fail2ban.conf fail2ban.conf_bak
+**```$ mv fail2ban.conf fail2ban.conf_bak```**
 
 then create a copy of jail.conf
-$ cp jail.conf jail.local
+**```$ cp jail.conf jail.local```**
 
-open jail.local with nano/vi
+# open jail.local with nano/vi
 uncoment the ignoreip field line 92 and add trusted ip, which will not be observed by fail2ban, here the ip is 192.168.77.147
-ignoreip = 127.0.0.1/8 ::1 192.168.77.147
+```ignoreip = 127.0.0.1/8 ::1 192.168.77.147```
 
 restart the fail2ban service
-$ sudo systemctl restart fail2ban
+**```$ sudo systemctl restart fail2ban```**
 
 then go inside jail.d directory  
-$ cd /etc/fail2ban/jail.d/
+**```$ cd /etc/fail2ban/jail.d/```**
 
 Create a new file name sshd.local
-$ nano sshd.local
+**```$ nano sshd.local```**
 
 and add below lines to it.
-```
+**```
 [sshd]
 enabled = true
 port = ssh
@@ -42,14 +42,14 @@ action = iptables-multiport
 logpath = /var/log/secure  # Log file location
 maxretry = 3      # Max password attempt
 bantime = 600     # Ban the ip for next 10 minutes
-```
+```**
 save the file and restart the fail2ban service.
 
 try to connect with any other ip than the ignored one
 
 
 below are the log file which is showing the blocking
-
+**
 ```
 2026-11-01 07:10:30,709 fail2ban.server         [2408]: INFO    Starting Fail2ban v1.1.0
 2026-11-01 07:10:30,710 fail2ban.observer       [2408]: INFO    Observer start...
@@ -76,11 +76,11 @@ below are the log file which is showing the blocking
 2026-11-01 07:15:47,205 fail2ban.actions        [2408]: NOTICE  [sshd] Ban 10.10.10.122
 2026-11-01 07:25:46,476 fail2ban.actions        [2408]: NOTICE  [sshd] Unban 10.10.10.122
 ```
-
+**
 
 Unblocking a block listed ip for the emergency case.
 
-$ sudo fail2ban-client set sshd unbanip 192.168.1.69
+**```$ sudo fail2ban-client set sshd unbanip 192.168.1.69```**
 
 
 

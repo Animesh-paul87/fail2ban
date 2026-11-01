@@ -1,5 +1,5 @@
 # fail2ban
-fail2ban configuration
+<code style="color : gold">fail2ban configuration</code>
 
 ###### Required repository `EPEL`
 
